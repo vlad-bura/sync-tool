@@ -18,9 +18,7 @@ public class IssueService {
 
     public JiraIssue createJiraIssue(JiraIssue issue) {
         String url = jiraConfig.getUrl() + REST_API_2_ISSUE;
-
         ResponseEntity<String> response = jiraRequestService.performPostRequest(url, issue, String.class);
-
         if (!response.getStatusCode().is2xxSuccessful()) {
             throw new RuntimeException("Failed creating JIRA issue: " + JsonUtil.serialize(issue));
         }

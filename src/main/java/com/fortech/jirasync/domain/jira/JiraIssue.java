@@ -10,8 +10,6 @@ public class JiraIssue {
 
     private Fields fields;
 
-    // Getters and Setters
-
     @Data
     public static class Fields {
 
@@ -27,14 +25,10 @@ public class JiraIssue {
     @Data
     public static class Project {
         private String key;
-
-        // Getters and Setters
     }
 
     @Data
     public static class IssueType {
         private IssueTypeEnum name;
-
-        // Getters and Setters
     }
 }

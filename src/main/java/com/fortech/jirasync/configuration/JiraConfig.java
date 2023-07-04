@@ -10,11 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Getter
 @Setter
 public class JiraConfig {
-
     private String url;
     private String username;
     private String token;
-
-    // getters and setters
 }
 
