@@ -6,7 +6,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lombok.SneakyThrows;
 
 public class JsonUtil {
-
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
     static {
@@ -15,6 +14,8 @@ public class JsonUtil {
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
+    private JsonUtil() {
+    }
 
     @SneakyThrows
     public static String serialize(Object obj) {
