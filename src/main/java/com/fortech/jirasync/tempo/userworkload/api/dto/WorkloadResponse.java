@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class Root {
-    public Worklogs worklogs;
+    private Worklogs worklogs;
 }
