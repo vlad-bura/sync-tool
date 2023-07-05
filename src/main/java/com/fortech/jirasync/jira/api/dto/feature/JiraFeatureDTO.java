@@ -1,6 +1,6 @@
 package com.fortech.jirasync.jira.api.dto.feature;
 
-import com.fortech.jirasync.jira.feature.api.controller.api.dto.FeatureDto;
+import com.fortech.jirasync.jira.feature.api.dto.FeatureDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,6 +13,7 @@ import java.util.List;
 @Data
 public class JiraFeatureDTO {
 
+    //"summary","status","assignee",  implicit: all
     private List<String> fields;
     private String jql;
     private int maxResults;

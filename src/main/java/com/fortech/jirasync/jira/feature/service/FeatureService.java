@@ -3,7 +3,7 @@ package com.fortech.jirasync.jira.feature.service;
 import com.fortech.jirasync.jira.JiraConfig;
 import com.fortech.jirasync.jira.api.JiraRequestService;
 import com.fortech.jirasync.jira.api.dto.feature.JiraFeatureDTO;
-import com.fortech.jirasync.jira.feature.api.controller.exception.CouldNotGetFeatureFromJiraException;
+import com.fortech.jirasync.jira.feature.api.exception.CouldNotGetFeatureFromJiraException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
