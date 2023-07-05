@@ -4,25 +4,25 @@ import lombok.Data;
 
 @Data
 public class Worklog {
-    public String activity_name;
-    public int hours;
-    public int issue_id;
-    public String work_date;
-    public String parent_key;
-    public int external_hours;
-    public String reporter;
-    public String external_id;
-    public int worklog_id;
-    public int billed_hours;
-    public String issue_key;
-    public String billing_attributes;
-    public String work_description;
-    public String staff_id;
-    public String activity_id;
-    public String external_result;
-    public String hash_value;
-    public IssueDetails issue_details;
-    public String billing_key;
-    public String username;
-    public String external_tstamp;
+    private String activity_name;
+    private int hours;
+    private int issue_id;
+    private String work_date;
+    private String parent_key;
+    private int external_hours;
+    private String reporter;
+    private String external_id;
+    private int worklog_id;
+    private int billed_hours;
+    private String issue_key;
+    private String billing_attributes;
+    private String work_description;
+    private String staff_id;
+    private String activity_id;
+    private String external_result;
+    private String hash_value;
+    private IssueDetails issue_details;
+    private String billing_key;
+    private String username;
+    private String external_tstamp;
 }

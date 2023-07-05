@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 @Data
 public class JiraPTO{
-    public String month;
-    public ArrayList<String> days;
+    private String month;
+    private ArrayList<String> days;
 }
 

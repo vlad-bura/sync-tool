@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class AuthenticationResponse {
-    public String userName;
-    public String userEmail;
-    public String fullName;
-    public String userRole;
-    public String token;
-    public boolean isActiveDirectory;
+    private String userName;
+    private String userEmail;
+    private String fullName;
+    private String userRole;
+    private String token;
+    private boolean isActiveDirectory;
 }
 

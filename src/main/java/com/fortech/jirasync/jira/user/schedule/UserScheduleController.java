@@ -1,7 +1,6 @@
 package com.fortech.jirasync.jira.user.schedule;
 
 import com.fortech.jirasync.jira.user.schedule.dto.Schedule;
-import com.fortech.jirasync.tempo.userworkload.api.dto.Root;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,6 +6,6 @@ import java.util.ArrayList;
 
 @Data
 public class PtoResponse {
-    public String name;
-    public ArrayList<JiraPTO> jiraPTOs;
+    private String name;
+    private ArrayList<JiraPTO> jiraPTOs;
 }

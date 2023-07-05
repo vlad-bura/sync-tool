@@ -4,7 +4,7 @@ package com.fortech.jirasync.tempo.userworkload.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fortech.jirasync.tempo.userworkload.api.UserWorkloadController;
-import com.fortech.jirasync.tempo.userworkload.api.dto.Root;
+import com.fortech.jirasync.tempo.userworkload.api.dto.WorkloadResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
@@ -27,7 +27,7 @@ public class TempoUserWorkload implements UserWorkloadController {
     private final RestTemplate restTemplate;
 
     @Override
-    public Root getUserWorkload() {
+    public WorkloadResponse getUserWorkload() {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<?> entity = new HttpEntity<>(headers);
         String url =  "https://ijira.fortech.ro/plugins/servlet/tempo-getWorklog/";
@@ -50,9 +50,9 @@ public class TempoUserWorkload implements UserWorkloadController {
         JSONObject json= XML.toJSONObject(Objects.requireNonNull(response.getBody()));
         ObjectMapper om = new ObjectMapper();
         try {
-            Root root = om.readValue(json.toString(), Root.class);
-            root.getWorklogs().getWorklog().forEach(s->log.info(s.toString()));
-            return root;
+            WorkloadResponse workloadResponse = om.readValue(json.toString(), WorkloadResponse.class);
+            workloadResponse.getWorklogs().getWorklog().forEach(s->log.info(s.toString()));
+            return workloadResponse;
         } catch (JsonProcessingException e) {
             log.error(e.getMessage());
             throw new RuntimeException(e);

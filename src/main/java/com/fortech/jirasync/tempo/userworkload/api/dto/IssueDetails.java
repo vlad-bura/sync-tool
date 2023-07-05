@@ -5,20 +5,20 @@ package com.fortech.jirasync.tempo.userworkload.api.dto;
 /* ObjectMapper om = new ObjectMapper();
 Root root = om.readValue(myJsonString, Root.class); */
 public class IssueDetails{
-    public int remaining_estimate;
-    public String type_name;
-    public int priority_id;
-    public String priority_name;
-    public int status_id;
-    public String project_key;
-    public String status_name;
-    public int type_id;
-    public String created;
-    public String project_name;
-    public String project_category;
-    public String updated;
-    public int component_id;
-    public String component_name;
+    private int remaining_estimate;
+    private String type_name;
+    private int priority_id;
+    private String priority_name;
+    private int status_id;
+    private String project_key;
+    private String status_name;
+    private int type_id;
+    private String created;
+    private String project_name;
+    private String project_category;
+    private String updated;
+    private int component_id;
+    private String component_name;
 }
 
 

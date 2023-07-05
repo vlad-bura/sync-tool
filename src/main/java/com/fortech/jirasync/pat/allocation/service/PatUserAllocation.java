@@ -42,7 +42,6 @@ public class PatUserAllocation implements UserAllocationController {
                 entity,
                 PtoResponse.class
         );
-
         return response.getBody();
     }
 
