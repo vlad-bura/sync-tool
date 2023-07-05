@@ -1,8 +1,9 @@
-package com.fortech.jirasync.jira.issue;
+package com.fortech.jirasync.jira.issue.api;
 
 import com.fortech.jirasync.configuration.utils.JsonUtil;
-import com.fortech.jirasync.jira.issue.dto.IssueDTO;
-import com.fortech.jirasync.jira.issue.dto.JiraApiIssueDTO;
+import com.fortech.jirasync.jira.issue.api.dto.IssueDTO;
+import com.fortech.jirasync.jira.api.dto.JiraAPIIssueDTO;
+import com.fortech.jirasync.jira.issue.service.IssueService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,7 +22,7 @@ public class IssueController {
     @PostMapping
     public ResponseEntity<String> createIssue(@RequestBody IssueDTO issueDto) {
         try {
-            JiraApiIssueDTO jiraIssue = JiraApiIssueDTO.fromIssueDTO(issueDto);
+            JiraAPIIssueDTO jiraIssue = JiraAPIIssueDTO.fromIssueDTO(issueDto);
             // Convert the JiraIssue to JSON and send as the request body
             var createdIssue = issueService.createJiraIssue(jiraIssue);
             return ResponseEntity.ok(JsonUtil.serialize(createdIssue));

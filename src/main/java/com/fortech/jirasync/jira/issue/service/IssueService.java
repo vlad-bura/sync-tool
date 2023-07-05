@@ -1,9 +1,9 @@
-package com.fortech.jirasync.jira.issue;
+package com.fortech.jirasync.jira.issue.service;
 
 import com.fortech.jirasync.jira.JiraConfig;
 import com.fortech.jirasync.jira.JiraRequestService;
 import com.fortech.jirasync.configuration.utils.JsonUtil;
-import com.fortech.jirasync.jira.issue.dto.JiraApiIssueDTO;
+import com.fortech.jirasync.jira.api.dto.JiraAPIIssueDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +17,13 @@ public class IssueService {
     private final JiraConfig jiraConfig;
     private final JiraRequestService jiraRequestService;
 
-    public JiraApiIssueDTO createJiraIssue(JiraApiIssueDTO issue) {
+    public JiraAPIIssueDTO createJiraIssue(JiraAPIIssueDTO issue) {
         String url = jiraConfig.getUrl() + REST_API_2_ISSUE;
         ResponseEntity<String> response = jiraRequestService.performPostRequest(url, issue, String.class);
         if (!response.getStatusCode().is2xxSuccessful()) {
             throw new RuntimeException("Failed creating JIRA issue: " + JsonUtil.serialize(issue));
         }
-        return JsonUtil.deserialize(response.getBody(), JiraApiIssueDTO.class);
+        return JsonUtil.deserialize(response.getBody(), JiraAPIIssueDTO.class);
     }
 
     public String getIssue(String issueKey) {

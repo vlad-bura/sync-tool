@@ -1,6 +1,7 @@
-package com.fortech.jirasync.jira.issue.dto;
+package com.fortech.jirasync.jira.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fortech.jirasync.jira.issue.api.dto.IssueDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-public class JiraApiIssueDTO {
+public class JiraAPIIssueDTO {
 
     private Fields fields;
 
@@ -38,8 +39,8 @@ public class JiraApiIssueDTO {
         private IssueTypeEnum name;
     }
 
-    public static JiraApiIssueDTO fromIssueDTO(IssueDTO dto) {
-        return new JiraApiIssueDTO(Fields.builder()
+    public static JiraAPIIssueDTO fromIssueDTO(IssueDTO dto) {
+        return new JiraAPIIssueDTO(Fields.builder()
                 .project(new Project(dto.getProjectKey()))
                 .summary(dto.getSummary())
                 .description(dto.getDescription())

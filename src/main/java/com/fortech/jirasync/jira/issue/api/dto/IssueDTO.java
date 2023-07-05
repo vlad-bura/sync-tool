@@ -1,5 +1,6 @@
-package com.fortech.jirasync.jira.issue.dto;
+package com.fortech.jirasync.jira.issue.api.dto;
 
+import com.fortech.jirasync.jira.api.dto.IssueTypeEnum;
 import lombok.Data;
 
 @Data
