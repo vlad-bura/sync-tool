@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class FeatureDto {
+public class FeatureRequestDto {
 
     private List<String> fields;
     private String jql;
