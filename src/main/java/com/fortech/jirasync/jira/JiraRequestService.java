@@ -1,6 +1,6 @@
 package com.fortech.jirasync.jira;
 
-import com.fortech.jirasync.jira.issue.service.RequestService;
+import com.fortech.jirasync.configuration.utils.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;

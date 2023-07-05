@@ -1,32 +1,27 @@
-package com.fortech.jirasync.jira.issue.controller.impl;
+package com.fortech.jirasync.jira.issue;
 
-import com.fortech.jirasync.jira.issue.api.IssueController;
-import com.fortech.jirasync.jira.issue.api.dto.IssueDTO;
-import com.fortech.jirasync.jira.issue.jira.JiraIssue;
-import com.fortech.jirasync.jira.issue.mapper.IssueMapper;
-import com.fortech.jirasync.jira.issue.service.IssueService;
 import com.fortech.jirasync.configuration.utils.JsonUtil;
+import com.fortech.jirasync.jira.issue.dto.IssueDTO;
+import com.fortech.jirasync.jira.issue.dto.JiraApiIssueDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
 @RequestMapping("/api/jira/issue")
 @AllArgsConstructor
-public class JiraIssueController implements IssueController {
+public class IssueController {
 
     private final IssueService issueService;
-    private IssueMapper issueMapper;
 
 
-    @Override
-    public ResponseEntity<String> createIssue(IssueDTO issueDto) {
+    @PostMapping
+    public ResponseEntity<String> createIssue(@RequestBody IssueDTO issueDto) {
         try {
-            JiraIssue jiraIssue = issueMapper.toJiraIssue(issueDto);
+            JiraApiIssueDTO jiraIssue = JiraApiIssueDTO.fromIssueDTO(issueDto);
             // Convert the JiraIssue to JSON and send as the request body
             var createdIssue = issueService.createJiraIssue(jiraIssue);
             return ResponseEntity.ok(JsonUtil.serialize(createdIssue));
@@ -38,8 +33,8 @@ public class JiraIssueController implements IssueController {
     }
 
 
-    @Override
-    public ResponseEntity<String> getIssue(String issueKey) {
+    @GetMapping("/{issueKey}")
+    public ResponseEntity<String> getIssue(@PathVariable String issueKey) {
         String issueDetails = issueService.getIssue(issueKey);
         return ResponseEntity.ok(issueDetails);
     }

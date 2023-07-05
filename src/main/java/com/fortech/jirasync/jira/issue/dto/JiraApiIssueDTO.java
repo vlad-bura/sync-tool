@@ -1,16 +1,20 @@
-package com.fortech.jirasync.jira.issue.jira;
+package com.fortech.jirasync.jira.issue.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Data
-public class JiraIssue {
+@AllArgsConstructor
+public class JiraApiIssueDTO {
 
     private Fields fields;
 
     @Data
+    @Builder
     public static class Fields {
 
         private Project project;
@@ -23,12 +27,24 @@ public class JiraIssue {
     }
 
     @Data
+    @AllArgsConstructor
     public static class Project {
         private String key;
     }
 
     @Data
+    @AllArgsConstructor
     public static class IssueType {
         private IssueTypeEnum name;
+    }
+
+    public static JiraApiIssueDTO fromIssueDTO(IssueDTO dto) {
+        return new JiraApiIssueDTO(Fields.builder()
+                .project(new Project(dto.getProjectKey()))
+                .summary(dto.getSummary())
+                .description(dto.getDescription())
+                .issueType(new IssueType(dto.getIssueType()))
+                .build()
+        );
     }
 }

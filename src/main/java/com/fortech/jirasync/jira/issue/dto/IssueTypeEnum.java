@@ -1,4 +1,4 @@
-package com.fortech.jirasync.jira.issue.jira;
+package com.fortech.jirasync.jira.issue.dto;
 
 public enum IssueTypeEnum {
     BUG("Bug"),

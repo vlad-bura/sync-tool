@@ -1,4 +1,4 @@
-package com.fortech.jirasync.jira.issue.service;
+package com.fortech.jirasync.configuration.utils;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.*;
