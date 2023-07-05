@@ -30,10 +30,6 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 	annotationProcessor 'org.json:json:20230227'
-//	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'
-//	implementation group: 'com.sun.xml.bind', name: 'jaxb-core', version: '2.3.0'
-//	implementation group: 'com.sun.xml.bind', name: 'jaxb-impl', version: '2.3.0'
-	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.15.2'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
