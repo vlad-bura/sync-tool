@@ -1,7 +1,7 @@
 package com.fortech.jirasync.jira.issue.service;
 
 import com.fortech.jirasync.jira.JiraConfig;
-import com.fortech.jirasync.jira.JiraRequestService;
+import com.fortech.jirasync.jira.api.JiraRequestService;
 import com.fortech.jirasync.configuration.utils.JsonUtil;
 import com.fortech.jirasync.jira.api.dto.JiraIssueDTO;
 import lombok.AllArgsConstructor;

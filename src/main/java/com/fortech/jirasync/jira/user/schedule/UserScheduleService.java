@@ -2,7 +2,7 @@ package com.fortech.jirasync.jira.user.schedule;
 
 import com.fortech.jirasync.jira.JiraConfig;
 import com.fortech.jirasync.jira.user.schedule.dto.Schedule;
-import com.fortech.jirasync.jira.JiraRequestService;
+import com.fortech.jirasync.jira.api.JiraRequestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
