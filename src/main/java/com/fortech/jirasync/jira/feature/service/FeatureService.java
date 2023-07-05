@@ -1,17 +1,17 @@
 package com.fortech.jirasync.jira.feature.service;
 
-import com.fortech.jirasync.jira.JiraConfig;
-import com.fortech.jirasync.jira.api.JiraRequestService;
-import com.fortech.jirasync.jira.api.dto.feature.JiraFeatureDTO;
-import com.fortech.jirasync.jira.feature.api.exception.CouldNotGetFeatureFromJiraException;
+import com.fortech.jirasync.configuration.utils.JsonUtil;
+import com.fortech.jirasync.jira.config.JiraConfig;
+import com.fortech.jirasync.jira.config.JiraRequestService;
+import com.fortech.jirasync.jira.feature.api.dto.FeatureRequestDto;
+import com.fortech.jirasync.jira.feature.api.dto.FeatureResponseDto;
+import com.fortech.jirasync.jira.feature.api.exception.FeatureNotFoundException;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class FeatureService {
 
     private static final String REST_API_2_SEARCH = "/rest/api/2/search";
@@ -20,16 +20,14 @@ public class FeatureService {
     private final JiraRequestService jiraRequestService;
 
 
-    public String getFeatures(JiraFeatureDTO jiraFeatureDto) {
+    public FeatureResponseDto searchFeature(FeatureRequestDto jiraFeatureRequestDto) {
         String url = jiraConfig.getUrl() + REST_API_2_SEARCH;
         try {
             ResponseEntity<String> responseEntity =
-                    jiraRequestService.performPostRequest(url, jiraFeatureDto, String.class);
-            return responseEntity.getBody();
+                    jiraRequestService.performPostRequest(url, jiraFeatureRequestDto, String.class);
+            return JsonUtil.deserialize(responseEntity.getBody(), FeatureResponseDto.class);
         } catch (Exception e) {
-            throw new CouldNotGetFeatureFromJiraException(e.getMessage());
+            throw new FeatureNotFoundException(e.getMessage());
         }
     }
-
-
 }

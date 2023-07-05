@@ -1,7 +1,6 @@
-package com.fortech.jirasync.jira.api.dto.issue;
+package com.fortech.jirasync.jira.issue.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fortech.jirasync.jira.issue.api.dto.IssueDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

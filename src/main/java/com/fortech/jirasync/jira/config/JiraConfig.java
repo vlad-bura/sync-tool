@@ -1,4 +1,4 @@
-package com.fortech.jirasync.jira;
+package com.fortech.jirasync.jira.config;
 
 import lombok.Getter;
 import lombok.Setter;
