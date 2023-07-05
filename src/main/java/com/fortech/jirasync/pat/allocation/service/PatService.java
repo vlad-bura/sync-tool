@@ -17,7 +17,7 @@ public class PatService {
     public AuthenticationResponse getBearerToken() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        AuthenticationRequest authenticationRequest = new AuthenticationRequest("forecasttimesheet", "")git;
+        AuthenticationRequest authenticationRequest = new AuthenticationRequest("forecasttimesheet", "");
         HttpEntity<AuthenticationRequest> request = new HttpEntity<>(authenticationRequest, headers);
         ResponseEntity<AuthenticationResponse> response = restTemplate.exchange(
                 "https://peopleallocation.fortech.ro:5008/api/users/auth/login",
