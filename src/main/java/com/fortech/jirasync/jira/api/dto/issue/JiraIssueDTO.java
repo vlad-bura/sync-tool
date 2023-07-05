@@ -1,4 +1,4 @@
-package com.fortech.jirasync.jira.api.dto;
+package com.fortech.jirasync.jira.api.dto.issue;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fortech.jirasync.jira.issue.api.dto.IssueDTO;

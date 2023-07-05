@@ -3,7 +3,7 @@ package com.fortech.jirasync.jira.issue.service;
 import com.fortech.jirasync.jira.JiraConfig;
 import com.fortech.jirasync.jira.api.JiraRequestService;
 import com.fortech.jirasync.configuration.utils.JsonUtil;
-import com.fortech.jirasync.jira.api.dto.JiraIssueDTO;
+import com.fortech.jirasync.jira.api.dto.issue.JiraIssueDTO;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
