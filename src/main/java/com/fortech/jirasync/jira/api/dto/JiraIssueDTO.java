@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
-public class JiraAPIIssueDTO {
+public class JiraIssueDTO {
 
     private Fields fields;
 
@@ -39,8 +39,8 @@ public class JiraAPIIssueDTO {
         private IssueTypeEnum name;
     }
 
-    public static JiraAPIIssueDTO fromIssueDTO(IssueDTO dto) {
-        return new JiraAPIIssueDTO(Fields.builder()
+    public static JiraIssueDTO fromIssueDTO(IssueDTO dto) {
+        return new JiraIssueDTO(Fields.builder()
                 .project(new Project(dto.getProjectKey()))
                 .summary(dto.getSummary())
                 .description(dto.getDescription())
