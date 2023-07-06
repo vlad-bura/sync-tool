@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class FeatureService {
 
-    private static final String REST_API_2_SEARCH = "/rest/api/2/search";
+    private static final String REST_API_2_SEARCH = "rest/api/2/search";
 
     private final JiraConfig jiraConfig;
     private final JiraRequestService jiraRequestService;
@@ -23,9 +23,9 @@ public class FeatureService {
     public FeatureResponseDto searchFeature(FeatureRequestDto jiraFeatureRequestDto) {
         String url = jiraConfig.getUrl() + REST_API_2_SEARCH;
         try {
-            ResponseEntity<String> responseEntity =
-                    jiraRequestService.performPostRequest(url, jiraFeatureRequestDto, String.class);
-            return JsonUtil.deserialize(responseEntity.getBody(), FeatureResponseDto.class);
+            ResponseEntity<FeatureResponseDto> responseEntity =
+                    jiraRequestService.performPostRequest(url, jiraFeatureRequestDto, FeatureResponseDto.class);
+            return responseEntity.getBody();
         } catch (Exception e) {
             throw new FeatureNotFoundException(e.getMessage());
         }
