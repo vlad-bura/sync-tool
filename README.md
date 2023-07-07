@@ -40,3 +40,6 @@ Body:
     }
 }
 ```
+
+### Call endpoint to delete timesheet:
+- http://localhost:8080/api/jira/timesheet/delete/{worklogId}  `DELETE`

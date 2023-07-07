@@ -31,4 +31,9 @@ public abstract class RequestService {
         HttpEntity<T> requestEntity = createRequestEntity(requestBody);
         return restTemplate.exchange(url, HttpMethod.POST, requestEntity, responseType);
     }
+
+    public void performDeleteRequest(String url) {
+        HttpEntity<?> requestEntity = createRequestEntity(null);
+        restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, Void.class);
+    }
 }

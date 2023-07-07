@@ -6,10 +6,7 @@ import com.fortech.jirasync.jira.worklog.api.dto.TimesheetResponseDto;
 import com.fortech.jirasync.jira.worklog.service.TimesheetService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/jira")
@@ -24,5 +21,10 @@ public class TimesheetController {
 
         TimesheetResponseDto response = timesheetService.createTimesheet(timesheetRequestDto);
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/timesheet/delete/{worklogId}")
+    public void deleteTimesheet(@PathVariable String worklogId) {
+        timesheetService.deleteTimesheet(worklogId);
     }
 }
