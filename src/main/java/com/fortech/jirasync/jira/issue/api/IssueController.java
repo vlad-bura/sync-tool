@@ -1,6 +1,5 @@
 package com.fortech.jirasync.jira.issue.api;
 
-import com.fortech.jirasync.configuration.utils.JsonUtil;
 import com.fortech.jirasync.jira.issue.api.dto.IssueDTO;
 import com.fortech.jirasync.jira.issue.api.dto.JiraIssueDTO;
 import com.fortech.jirasync.jira.issue.service.IssueService;
@@ -18,25 +17,22 @@ public class IssueController {
 
     private final IssueService issueService;
 
-
     @PostMapping
-    public ResponseEntity<String> createIssue(@RequestBody IssueDTO issueDto) {
+    public ResponseEntity<?> createIssue(@RequestBody IssueDTO issueDto) {
         try {
             JiraIssueDTO jiraIssue = JiraIssueDTO.fromIssueDTO(issueDto);
-            // Convert the JiraIssue to JSON and send as the request body
-            var createdIssue = issueService.createJiraIssue(jiraIssue);
-            return ResponseEntity.ok(JsonUtil.serialize(createdIssue));
+            var createdIssueKey = issueService.createJiraIssue(jiraIssue).getKey();
+            JiraIssueDTO createdIssue = issueService.getIssue(createdIssueKey);
+            return ResponseEntity.ok(IssueDTO.from(createdIssue));
         } catch (Exception e) {
-            // Handle exception and return appropriate response
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating issue: " + e.getMessage());
         }
 
     }
 
-
     @GetMapping("/{issueKey}")
-    public ResponseEntity<String> getIssue(@PathVariable String issueKey) {
-        String issueDetails = issueService.getIssue(issueKey);
-        return ResponseEntity.ok(issueDetails);
+    public ResponseEntity<IssueDTO> getIssue(@PathVariable String issueKey) {
+        JiraIssueDTO jiraIssueDTO = issueService.getIssue(issueKey);
+        return ResponseEntity.ok(IssueDTO.from(jiraIssueDTO));
     }
 }

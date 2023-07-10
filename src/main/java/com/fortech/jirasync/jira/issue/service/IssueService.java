@@ -19,16 +19,16 @@ public class IssueService {
 
     public JiraIssueDTO createJiraIssue(JiraIssueDTO issue) {
         String url = jiraConfig.getUrl() + REST_API_2_ISSUE;
-        ResponseEntity<String> response = jiraRequestService.performPostRequest(url, issue, String.class);
+        ResponseEntity<JiraIssueDTO> response = jiraRequestService.performPostRequest(url, issue, JiraIssueDTO.class);
         if (!response.getStatusCode().is2xxSuccessful()) {
             throw new RuntimeException("Failed creating JIRA issue: " + JsonUtil.serialize(issue));
         }
-        return JsonUtil.deserialize(response.getBody(), JiraIssueDTO.class);
+        return response.getBody();
     }
 
-    public String getIssue(String issueKey) {
+    public JiraIssueDTO getIssue(String issueKey) {
         String url = jiraConfig.getUrl() + REST_API_2_ISSUE + issueKey;
-        ResponseEntity<String> responseEntity = jiraRequestService.performGetRequest(url, String.class);
+        ResponseEntity<JiraIssueDTO> responseEntity = jiraRequestService.performGetRequest(url, JiraIssueDTO.class);
         return responseEntity.getBody();
     }
 }
