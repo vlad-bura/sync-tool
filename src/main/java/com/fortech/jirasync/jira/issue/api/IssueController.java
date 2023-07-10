@@ -35,4 +35,5 @@ public class IssueController {
         JiraIssueDTO jiraIssueDTO = issueService.getIssue(issueKey);
         return ResponseEntity.ok(IssueDTO.from(jiraIssueDTO));
     }
+
 }
