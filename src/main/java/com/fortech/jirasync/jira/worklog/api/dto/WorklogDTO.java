@@ -13,5 +13,5 @@ public class WorklogDTO {
   private int startAt;
   private int maxResults;
   private int total;
-  private ArrayList<WorklogsDTO> worklogsDTO;
+  private ArrayList<WorklogsDTO> worklogs;
 }

@@ -10,6 +10,7 @@ public class AuthorDTO {
   private String name;
   private String key;
   private String emailAddress;
+  private AvatarUrlsDTO avatarUrls;
   private String displayName;
   private boolean active;
   private String timeZone;
